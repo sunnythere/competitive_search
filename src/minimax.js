@@ -150,23 +150,20 @@ var minimax = function(state, depth, maximizingPlayer){
 	//Your code here.
 
 	if (depth === 0 || state.nextStates().length === 0) {
-		return heuristic(state, maximizingPlayer)
+		return heuristic(state, maximizingPlayer);
 	} else {
 
-		possibleStates.map(function(state) {
-			return minimax(state, depth-1, maximizingPlayer);
-		})
+		var possibleValues = possibleStates.map(function(state) {
+			return minimax(state, depth - 1, maximizingPlayer);
+		});
 
 		if (currentPlayer === maximizingPlayer) {
-			possibleStates
+			return Math.max(...possibleValues);
 		} else {
-
+      return Math.min(...possibleValues);
 		}
-
 	}
-//console.log(possibleStates)
-
-}
+};
 
 
 
