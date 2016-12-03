@@ -114,10 +114,12 @@ var heuristic = function(state, maximizingPlayer){
     var minimizingPlayer = (maximizingPlayer == 'x') ? 'o' : 'x';
 
 	//An example.
-    var linesOfLengthTwoForX = state.numLines(2, 'x')
-
+    var linesOfLengthTwo = state.numLines(2, maximizingPlayer) - state.numLines(2, minimizingPlayer);
+    var linesOfLengthThree = state.numLines(3, maximizingPlayer) - state.numLines(3, minimizingPlayer);
+    var linesOfLengthFour = state.numLines(4, maximizingPlayer) - state.numLines(4, minimizingPlayer);
+    var howGoodIsTheState = linesOfLengthTwo + linesOfLengthThree * 2 + linesOfLengthFour * 100;
     //Your code here.  Don't return random, obviously.
-	return Math.random()
+	return howGoodIsTheState;
 }
 
 
